@@ -3,9 +3,9 @@
 ## write your first post 
 
 enter the `source/_post/` and wirte your markdown file here, details as follows: 
+
 ```bash
-$ cd source/_posts
-$ vi demo.md
+$ hexo n "文章标题" 
 ```
 
 ## import local images
