@@ -8,3 +8,5 @@ date: 2023-10-30
 介绍cursor的应用！
 
 <!--more-->
+
+![demo](/images/demo.png)
