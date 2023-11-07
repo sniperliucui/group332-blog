@@ -8,10 +8,11 @@ date: 2023-10-30
 介绍cursor的应用！
 
 <!--more-->
-## 下载：
-cursor.so/
+## 下载
 
-## 使用:
+download [Cursor](https://cursor.sh/)
+
+## 使用
 Ctrl + K:用来调出生成代码框,输入你想要的程序
 
 Ctrl + L:问它任何问题,比如代码怎么用,第几行代码是什么意思等等
