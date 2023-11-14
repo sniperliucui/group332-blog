@@ -3,6 +3,7 @@ title: 通用分布式计算引擎Ray
 tags: Ray
 categories: 分布式
 toc: true
+date: 2023-11-14
 ---
 
 [Ray](https://docs.ray.io/en/latest/) is an open-source unified framework for scaling AI and Python applications. It provides the compute layer for parallel processing so that you don’t need to be a distributed systems expert.
