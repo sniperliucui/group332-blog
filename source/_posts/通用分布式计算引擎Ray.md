@@ -13,11 +13,8 @@ date: 2023-11-22 23:00:00
 description:
 ---
 
-Ray框架介绍及简单应用
+Ray框架介绍及简单应用[Ray: A Distributed Framework for Emerging AI Applications](https://arxiv.org/pdf/1712.05889.pdf)
 <!--more-->
-
-[Ray: A Distributed Framework for Emerging AI Applications](https://arxiv.org/pdf/1712.05889.pdf)论文介绍了Ray的由来、编程和计算模型以及架构。
-
 
 Ray是一个并行和分布式Python的开源库。从高层次上看，Ray生态系统由三部分组成：核心Ray系统、用于机器学习的可扩展库（包括原生库和第三方库），以及用于在任何集群或云提供商商启动集群的工具。
 
