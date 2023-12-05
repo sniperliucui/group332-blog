@@ -28,6 +28,9 @@ Ray是基于Python的分布式计算框架，采用动态图计算模型，提�
 
 
 # Python分布式+并行化
+
+一个装饰器就能完成分布式计算。
+
 ```python
 import ray
 import time
@@ -79,6 +82,21 @@ if __name__ == '__main__':
 run with ray cost time: 1.3737518787384033
 run cost time: 10.364514827728271
 ```
+
+```python 
+@ray.remote
+```
+既能装饰函数也能装饰一个类：
+```python
+import ray
+ray.init()
+
+@ray.remote
+class Object:
+    def __init__(self):
+        pass
+```
+
 
 # 什么是分布式计算
 分布式计算（Distributed computing）是一种科学的计算方法，能把需要进行大量计算的工程数据分割成小块，由多台计算机分别计算，然后再把所有的结果进行合并，得出统一的结果。分布式计算能节约整体计算时间，提高效率。
