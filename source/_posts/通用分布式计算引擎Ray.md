@@ -1,23 +1,61 @@
 ---
-title: 通用分布式计算引擎Ray
-tags: Ray
-categories: 分布式
+title: 分布式计算引擎Ray
+categories:
+  - 分布式计算
+tags:
+  - Ray
 toc: true
-date: 2023-11-14
+copyright: true
+reward: false
+top: false
+mathjax: true
+date: 2023-11-22 23:00:00
+description:
 ---
 
-[Ray](https://docs.ray.io/en/latest/) is an open-source unified framework for scaling AI and Python applications. It provides the compute layer for parallel processing so that you don’t need to be a distributed systems expert.
+Ray框架介绍及简单应用
 <!--more-->
 
-# 分布式
+[Ray: A Distributed Framework for Emerging AI Applications](https://arxiv.org/pdf/1712.05889.pdf)论文介绍了Ray的由来、编程和计算模型以及架构。
+
+# 什么是分布式计算
+分布式计算（Distributed computing）是一种科学的计算方法，能把需要进行大量计算的工程数据分割成小块，由多台计算机分别计算，然后再把所有的结果进行合并，得出统一的结果。分布式计算能节约整体计算时间，提高效率。
+
+分布式计算的工作原理是计算机在分布式系统架构中相互传递消息，不同的模块和架构之间相互依赖。这种相互依赖称为耦合，耦合主要有两种类型。
+- 松耦合：在松耦合中，组件之间的联系较弱，因此对一个组件的更改不会影响另一个组件。  例如，客户端和服务器计算机可以按时间松散耦合。来自客户端的消息被添加到服务器队列中，客户端可以继续执行其他功能，直到服务器对其消息做出响应。
+- 紧密耦合：高性能分布式系统通常使用紧密耦合。快速局域网通常连接多台计算机，从而创建一个集群。在集群计算中，每台计算机都被设置为执行相同的任务。中央控制系统（称为集群中间件）控制和调度任务并协调不同计算机之间的通信。
+
+# 什么是并行计算
+并行计算是一种计算类型，其中，网络中的一台计算机或者多台计算机同时执行许多计算或处理。
+
+## 并行计算与分布式计算
+并行计算是分布式计算的一种特别紧密耦合的形式。在并行处理中，所有处理器都可以访问共享内存以在它们之间交换信息。另一方面，在分布式处理中，每个处理器都有私有内存（分布式内存）。处理器使用消息传递来交换信息。
 
 
-# Ray安装
-Ray currently officially supports x86_64, aarch64 (ARM) for Linux, and Apple silicon (M1) hardware. Ray on Windows is currently in beta.
 
-```bash
-pip install -U "ray[data,train,tune,serve]"
+   
 
-# For reinforcement learning support, install RLlib instead.
-# pip install -U "ray[rllib]"
-```
+# Ray框架的需求和设计
+## 计算框架的系统需求
+现有的用于大数据任务或者监督学习任务的框架按照所遵循的并行模型可以分为两类：块同步并行（Bulk-synchronous Parallel）和任务并行（Task Parallel）。块同步并行：MapReduce、Apache Spark和Dryad，这些框架是进程级并行的，应用场景比较广泛，可用于训练、模型服务等场景，但对于更细粒度的并行（例如仿真和交互）则不适用。任务并行：CIEL和Dask，它们虽然能做到细颗粒度的并行，但是缺少分布式训练和服务的功能
+。而Tensorflow等深度学习框架虽然支持分布式训练，但也不能很自然地支持仿真和服务。Tensorflow Serving和Clipper框架支持模型服务，但是不支持训练和仿真。
+
+# Ray编程模型
+
+# Ray计算模型
+
+# Ray的架构
+## 应用层
+
+## 系统层
+
+## GCS
+
+## 分布式调度器
+
+## 分布式对象存储器
+
+# 进程视角的架构分析
+
+
+
