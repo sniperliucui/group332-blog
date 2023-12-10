@@ -80,18 +80,35 @@ run with ray cost time: 1.3737518787384033
 run cost time: 10.364514827728271
 ```
 
-```python 
-@ray.remote
-```
-既能装饰函数也能装饰一个类：
+`@ray.remote`既能装饰函数也能装饰一个类：
+
 ```python
 import ray
+
 ray.init()
 
+
 @ray.remote
-class Object:
+class Counter(object):
     def __init__(self):
-        pass
+        self.n = 0
+
+    def increment(self):
+        self.n += 1
+
+    def read(self):
+        return self.n
+
+
+counters = [Counter.remote() for i in range(4)]  # 创建4个远程计数器对象列表
+tmp1 = [c.increment.remote() for c in counters]  
+tmp2 = [c.increment.remote() for c in counters]
+tmp3 = [c.increment.remote() for c in counters]
+futures = [c.read.remote() for c in counters]  # 三次操作是异步的
+# 等待并获取所有读取操作的结果，由于前面的增加操作是异步的，为了确保它们已经完成
+# 使用ray.get来等待所有的读取操作完成并返回结果列表
+# 打印读取操作的结果，即四个计数器的当前值。由于每个计数器都被增加了三次，因此结果是[3, 3, 3, 3]
+print(ray.get(futures))  # [3, 3, 3, 3]  
 ```
 
 
