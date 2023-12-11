@@ -111,6 +111,49 @@ futures = [c.read.remote() for c in counters]  # 三次操作是异步的
 print(ray.get(futures))  # [3, 3, 3, 3]  
 ```
 
+python并行化，平替版
+```python
+import multiprocessing
+import time
+
+N = 100
+
+
+def f(x, result_queue):
+    time.sleep(0.1)
+    result_queue.put(x * x)
+
+
+def run_multiprocess():
+    start_time = time.time()
+    result_queue = multiprocessing.Queue()
+    processes = []
+
+    for i in range(N):
+        process = multiprocessing.Process(target=f, args=(i, result_queue))
+        processes.append(process)
+        process.start()
+
+    # 等待所有进程结束
+    for process in processes:
+        process.join()
+
+    # 从队列中获取结果
+    results = []
+    while not result_queue.empty():
+        results.append(result_queue.get())
+
+    end_time = time.time()
+    cost_time = end_time - start_time
+    # print(f"res: {results}")
+    print(f"run with multiprocessing cost time: {cost_time}")
+    return cost_time
+
+
+if __name__ == '__main__':
+    run_multiprocess()
+```
+
 
 # 什么是分布式计算
 分布式计算（Distributed computing）是一种科学的计算方法，能把需要进行大量计算的工程数据分割成小块，由多台计算机分别计算，然后再把所有的结果进行合并，得出统一的结果。分布式计算能节约整体计算时间，提高效率。
