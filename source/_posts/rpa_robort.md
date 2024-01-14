@@ -7,7 +7,7 @@ copyright: true
 reward: false
 top: false
 mathjax: true
-date: 2023-01-14 01:00:00
+date: 2024-01-14 01:00:00
 ---
 
 RPA（Robotic Process Automation），译为流程自动化机器人，又可以称为数字化劳动力（Digital Labor），是一种智能化软件，通过模拟并增强人类与计算机的交互过程，实现工作流程中的自动化。
